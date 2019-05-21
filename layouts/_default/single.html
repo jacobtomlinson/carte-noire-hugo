@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="container-fluid single">
+    <div class="row">
+
+        <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+
+            {{ partial "article_title.html" .}}
+
+            <div class="content-panel content">
+
+                <!-- TODO: Re-instate series -->
+
+                <span itemprop="articleBody">{{ .Content }}</span>
+
+                <!-- TODO: Re-instate series next -->
+
+                <div class="tags">
+                    <small>
+                        <i class="fa fa-tags"></i>
+                        {{ delimit .Params.tags ", " }}
+                    </small>
+                </div>
+
+                <div class="suggest-edit">
+                    Spotted a mistake in this article? Why not <a href="{{ .Site.Params.SiteSourceURL }}/blob/master/content/{{ .File.Path }}" data-proofer-ignore>suggest an edit</a>!
+                </div>
+
+            </div>
+
+            {{ partial "feedback.html" . }}
+
+            {{ partial "comments.html" . }}
+
+            {{ partial "related_posts.html" . }}
+
+        </div>
+
+    </div>
+
+    </div>
+</div>
+
+{{ end }}

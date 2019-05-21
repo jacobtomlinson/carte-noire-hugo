@@ -1,0 +1,34 @@
+<div class="content-panel related clearfix">
+    {{ $related := .Site.RegularPages.Related . | first 1 }}
+    {{ with $related }}
+    {{ range . }}
+        <div class="related-header">
+            <a href="{{ .Permalink }}">Read More</a>
+        </div>
+        <div class="title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </div>
+            <div class="excerpt">
+                {{ .Summary | truncate 300 }}
+            <a href="{{ .Permalink }}">Continue Reading</a>
+        </div>
+    {{ end }}
+    {{ end }}
+    <hr />
+    <div class="previous previous-next">
+        {{if .NextPage}}
+        <p>
+        <a href="{{.NextPage.Permalink}}">{{.NextPage.Title}}</a>
+        </p>
+        <p class="date">Published {{ .NextPage.Date.Format "Jan 2, 2006"}}</p>
+        {{end}}
+    </div>
+    <div class="next previous-next">
+        {{if .PrevPage}}
+        <p>
+        <a href="{{.PrevPage.Permalink}}">{{.PrevPage.Title}}</a>
+        </p>
+        <p class="date">Published {{ .PrevPage.Date.Format "Jan 2, 2006"}}</p>
+        {{end}}
+    </div>
+</div>

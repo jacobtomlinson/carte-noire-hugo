@@ -1,0 +1,28 @@
+{{ if isset .Params "thumbnail" }}
+{{ if isset .Site.Data.Thumbnail .Params.thumbnail }}
+    <div class="thumb">
+        <img itemprop="image" src="{{ index .Site.Data.Thumbnail .Params.thumbnail }}" alt="Thumbnail: {{ .Params.thumbnail }}" />
+    </div>
+{{ end }}
+{{ end }}
+
+<h1 class="header" itemprop="name">{{ .Title }}</h1>
+
+<div class="author">
+    <small><i>
+    by
+    <span itemprop="author">
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">{{ .Site.Title }}</span>
+        </span>
+    </span>
+    on <span itemprop="datePublished" content="2014-08-28">{{ .Date.Format "Jan 2, 2006"}}</span>
+    {{ if isset .Params "categories" }} under {{ index .Params.categories 0 }}{{ end }}
+    </i></small>
+</div>
+
+<div class="read-time">
+    <small>
+    {{ .ReadingTime }} minute read
+    </small>
+</div>

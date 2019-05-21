@@ -1,0 +1,41 @@
+{{ define "main" }}
+<div class="container-fluid index error">
+    <div class="row">
+
+        <div class="col-md-12 content-panel articles">
+        <h1 class="header author-header">404</h1>
+
+        <div class="error-text">
+            Sorry but this page doesn't seem to exist.
+        </div>
+
+        <div class="error-text">
+            <a href="{{ .Site.BaseURL }}/">Home</a> |
+            <a href="{{ .Site.BaseURL }}/posts/">All Posts</a> |
+            <a href="{{ .Site.BaseURL }}/search/">Search</a>
+        </div>
+
+        {{ partial "social_links.html" . }}
+
+        </div>
+
+    </div>
+
+    <div class="content-panel related">
+
+        {{ range first 1 (where site.RegularPages "Type" "eq" "posts") }}
+        <div class="related-header">
+            <a href="{{ .Permalink }}">Suggested Article</a>
+        </div>
+        <div class="title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </div>
+        <div class="excerpt">
+            {{ .Summary | truncate 300 }}
+            <a href="{{ .Permalink }}">Continue Reading</a>
+        </div>
+        {{ end }}
+    </div>
+
+</div>
+{{ end }}
