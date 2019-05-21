@@ -1,6 +1,6 @@
 # Carte Noire
 
-A simple Jekyll theme for blogging. Not named after the coffee.
+A simple Hugo theme for blogging. Not named after the coffee.
 
 ![Homepage](http://i.imgur.com/xlmHArV.png)
 
@@ -28,8 +28,7 @@ tweet me [@_jacobtomlinson](http://www.twitter.com/_jacobtomlinson) or email me
 Pull requests are very welcome.
 
 ## Theme
-This jekyll theme has been created from scratch. Ideas and inspiration are taken
-from other places but the code is my own.
+This Hugo theme is a port of the Jekyll theme of the same name. Ideas and inspiration are taken from other places but the code is my own.
 
 ## Tools and Libraries
 The following tools and libraries are used in this theme
@@ -53,4 +52,4 @@ The following tools and libraries are used in this theme
  * [Google Analytics](http://www.google.com/analytics/)
 
 ## License
-The jekyll theme, HTML, CSS and JavaScript is licensed under GPLv3 (unless stated otherwise in the file).
+The theme, HTML, CSS and JavaScript is licensed under GPLv3 (unless stated otherwise in the file).
