@@ -47,6 +47,9 @@ The following tools and libraries are used in this theme
  * [AddThis](http://www.addthis.com/)
  * [Disqus](https://disqus.com/)
 
+### Typesetting
+ * [KaTeX](https://katex.org/)
+
 ### Other
  * [Real Favicon Generator](http://realfavicongenerator.net/)
  * [Google Analytics](http://www.google.com/analytics/)
