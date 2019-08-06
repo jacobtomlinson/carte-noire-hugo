@@ -47,6 +47,13 @@ The following tools and libraries are used in this theme
  * [AddThis](http://www.addthis.com/)
  * [Disqus](https://disqus.com/)
 
+### Typesetting
+ * [KaTeX](https://katex.org/)  
+   For pages containing math, [Mmark][] files are preferred. There's more about that on [this blog post][nosubstance].
+
+[mmark]: https://mmark.miek.nl/syntax
+[nosubstance]: http://nosubstance.me/post/a-great-toolset-for-static-blogging/
+
 ### Other
  * [Real Favicon Generator](http://realfavicongenerator.net/)
  * [Google Analytics](http://www.google.com/analytics/)
