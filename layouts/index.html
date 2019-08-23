@@ -5,36 +5,37 @@
         <div class="col-md-12 main content-panel">
 
             <div class="gravatar">
-                <img src="{{ .Site.Params.HeroImage }}" class="img-circle about-image" height="150" width="150" alt="{{ .Title }}" />
+                <img src="{{ .Site.Params.HeroImage }}" class="img-circle about-image" height="150" width="150"
+                    alt="{{ .Title }}" />
             </div>
 
             <h1 class="header author-header" itemprop="headline">{{ .Title }}</h1>
 
             <div class="author-text">
-                {{ .Site.Params.description }}
+                {{ .Site.Params.description | markdownify }}
             </div>
 
             {{ partial "social_links.html" . }}
-          </div>
-          <div class="col-md-12 main content-panel">
+        </div>
+        <div class="col-md-12 main content-panel">
 
             <div class="articles">
 
-              <h2>Latest Articles</h2>
+                <h2>Latest Articles</h2>
 
-              <ul>
+                <ul>
 
-                {{ range first 5 (where site.RegularPages "Type" "eq" "posts") }}
-                <li>
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
-                    <small class="hidden-xs">{{ .Date.Format "January 2, 2006"}}</small>
-                </li>
-                {{ end }}
+                    {{ range first 5 (where site.RegularPages "Type" "eq" "posts") }}
+                    <li>
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                        <small class="hidden-xs">{{ .Date.Format "January 2, 2006"}}</small>
+                    </li>
+                    {{ end }}
 
-                <li>
-                    <small><i><a href="{{ .Site.BaseURL }}/posts/">more...</a></i></small>
-                </li>
-              </ul>
+                    <li>
+                        <small><i><a href="{{ .Site.BaseURL }}/posts/">more...</a></i></small>
+                    </li>
+                </ul>
 
             </div>
 
