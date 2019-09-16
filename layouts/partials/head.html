@@ -4,14 +4,16 @@
     <title>{{ .Title }}</title>
     <meta name="description" content="{{ .Description }}">
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@{{ .Site.Data.Social.twitter }}" />
-    <meta name="twitter:creator" content="@{{ .Site.Data.Social.twitter }}" />
-    <meta name="twitter:title" content="{{ .Title }}" />
-    <meta name="twitter:description" content="{{ .Description }}" />
-    <meta name="twitter:image" content="{{ .Site.Params.HeroImage }}" />
+    {{ template "_internal/opengraph.html" . }}
+    {{ template "_internal/twitter_cards.html" . }}
 
     <link rel="profile" href="http://gmpg.org/xfn/11" />
+
+    {{ if isset .Params "canonical" }}
+    <link rel="canonical" href="{{ .Params.canonical }}">
+    {{ else }}
+    <link rel="canonical" href="{{ .Permalink }}">
+    {{ end }}
 
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"
