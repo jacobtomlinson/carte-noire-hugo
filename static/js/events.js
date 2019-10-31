@@ -9,7 +9,7 @@ $(document).ready(function () {
             handler: function (direction) {
                 console.log("You finished reading the article!");
                 var end = new Date();
-                ga('send', 'event', 'article', 'read', this.element.getAttribute('article'), start - end);
+                ga('send', 'event', 'article', 'read', this.element.getAttribute('article'), (end - start) / 1000);
                 finishedArticleWaypoint.disable();
             },
             offset: 'bottom-in-view'
