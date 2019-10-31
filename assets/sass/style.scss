@@ -682,6 +682,20 @@ ul {
 				text-align: center;
 			}
 
+			.heading-page-anchor {
+				margin-left: 0.6em;
+				font-size: 0.6em;
+				margin-bottom: 0.2em;
+			}
+
+			a.heading-page-anchor, a:active.heading-page-anchor {
+				color: $light-medium;
+			}
+
+			a:hover.heading-page-anchor {
+				color: $dark-blue;
+			}
+
 		}
 
 		.feedback {
