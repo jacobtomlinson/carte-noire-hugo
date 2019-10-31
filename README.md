@@ -37,6 +37,7 @@ The following tools and libraries are used in this theme
  * [jQuery](http://jquery.com/)
  * [MMenu](http://mmenu.frebsite.nl/)
  * [HighlightJS](https://highlightjs.org/)
+ * [Waypoints](http://imakewebthings.com/waypoints/)
  * [Simple Jekyll Search](https://github.com/christian-fei/Simple-Jekyll-Search)
 
 ### CSS
@@ -48,7 +49,7 @@ The following tools and libraries are used in this theme
  * [Disqus](https://disqus.com/)
 
 ### Typesetting
- * [KaTeX](https://katex.org/)  
+ * [KaTeX](https://katex.org/)
    For pages containing math, [Mmark][] files are preferred. There's more about that on [this blog post][nosubstance].
 
 [mmark]: https://mmark.miek.nl/syntax
