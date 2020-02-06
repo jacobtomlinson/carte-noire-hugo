@@ -8,11 +8,10 @@
 
             <div class="content-panel content">
 
-                <!-- TODO: Re-instate series -->
+                {{ partial "series_header.html" . }}
 
                 <span itemprop="articleBody">{{ .Content }}</span>
 
-                <!-- TODO: Re-instate series next -->
 
                 <span id="finished-article" article="{{ .Title}}"></span>
 
@@ -30,6 +29,8 @@
                 </div>
 
             </div>
+
+            {{ partial "series_footer.html" . }}
 
             {{ partial "feedback.html" . }}
 

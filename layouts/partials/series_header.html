@@ -1,0 +1,32 @@
+{{ if .Params.series }}
+    {{ $.Scratch.Add "cur_page_num" 1 }}
+    {{ $.Scratch.Add "total_page_num" 0 }}
+    {{ $.Scratch.Add "series_link" (print "/series/" (index .Params.series 0 | urlize)) }}
+
+    {{ range where .Site.RegularPages.ByDate "Params.series" "intersect" .Params.series }}
+        {{ $.Scratch.Add "total_page_num" 1 }}
+        {{ if gt $.Date.Unix .Date.Unix }}
+            {{ $.Scratch.Add "cur_page_num" 1 }}
+            {{ $.Scratch.Set "prev_link" .Permalink }}
+            {{ $.Scratch.Set "prev_title" .Title }}
+        {{ end }}
+    {{ end }}
+
+    {{ range where .Site.RegularPages.ByDate.Reverse "Params.series" "intersect" .Params.series }}
+        {{ $.Scratch.Set "first_link" .Permalink }}
+        {{ if lt $.Date.Unix .Date.Unix }}
+            {{ $.Scratch.Set "next_link" .Permalink }}
+            {{ $.Scratch.Set "next_title" .Title }}
+        {{ end }}
+    {{ end }}
+
+    {{ if or ($.Scratch.Get "next_link") ($.Scratch.Get "prev_link") }}
+    <p>
+        This is part {{ $.Scratch.Get "cur_page_num" }} in the <a href="{{ $.Scratch.Get "series_link" }}">{{ index .Params.series 0 }}</a> series.
+        {{ if ($.Scratch.Get "prev_link") }}
+        If you haven’t read the previous parts you may want to go back and check those out.
+        {{ end }}
+    </p>
+    {{ end }}
+
+{{ end }}

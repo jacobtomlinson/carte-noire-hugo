@@ -1,0 +1,34 @@
+{{ if .Params.series }}
+
+    <div class="content-panel related clearfix">
+        <div class="related-header">
+            <a href="{{ $.Scratch.Get "series_link" }}">Continue series</a>
+        </div>
+        {{ if or ($.Scratch.Get "next_link") ($.Scratch.Get "prev_link") }}
+            <div class="title">
+                <a href="{{ $.Scratch.Get "series_link" }}">{{ index .Params.series 0 }}</a>
+            </div>
+            <div class="excerpt">
+                <p>This was part {{ $.Scratch.Get "cur_page_num" }} in the {{ index .Params.series 0 }} series.</p>
+            </div>
+            <hr />
+            <div class="previous previous-next">
+                {{ if $.Scratch.Get "prev_link" }}
+                <p>
+                    <a href="{{ $.Scratch.Get "prev_link" }}">{{ $.Scratch.Get "prev_title" }}</a>
+                    <p class="date">Part {{ sub ($.Scratch.Get "cur_page_num") 1 }}</p>
+                </p>
+                {{end}}
+            </div>
+            <div class="next previous-next">
+                {{ if $.Scratch.Get "next_link" }}
+                <p>
+                    <a href="{{ $.Scratch.Get "next_link" }}">{{ $.Scratch.Get "next_title" }}</a>
+                    <p class="date">Part {{ add ($.Scratch.Get "cur_page_num") 1 }}</p>
+                </p>
+                {{end}}
+            </div>
+        {{ end }}
+    </div>
+
+{{ end }}
