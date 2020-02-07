@@ -1,30 +1,52 @@
 {{ if .Params.series }}
+    {{ $scratch := newScratch }}
+    {{ $scratch.Add "cur_page_num" 1 }}
+    {{ $scratch.Add "total_page_num" 0 }}
+    {{ $scratch.Add "series_link" (print "/series/" (index .Params.series 0 | urlize)) }}
+
+    {{ range where .Site.RegularPages.ByDate "Params.series" "intersect" .Params.series }}
+        {{ $scratch.Add "total_page_num" 1 }}
+        {{ if gt $.Date.Unix .Date.Unix }}
+            {{ $scratch.Add "cur_page_num" 1 }}
+            {{ $scratch.Set "prev_link" .Permalink }}
+            {{ $scratch.Set "prev_title" .Title }}
+        {{ end }}
+    {{ end }}
+
+    {{ range where .Site.RegularPages.ByDate.Reverse "Params.series" "intersect" .Params.series }}
+        {{ $scratch.Set "first_link" .Permalink }}
+        {{ if lt $.Date.Unix .Date.Unix }}
+            {{ $scratch.Set "next_link" .Permalink }}
+            {{ $scratch.Set "next_title" .Title }}
+        {{ end }}
+    {{ end }}
 
     <div class="content-panel related clearfix">
         <div class="related-header">
-            <a href="{{ $.Scratch.Get "series_link" }}">Continue series</a>
+            <a href="{{ $scratch.Get "series_link" }}">Continue series</a>
         </div>
-        {{ if or ($.Scratch.Get "next_link") ($.Scratch.Get "prev_link") }}
-            <div class="title">
-                <a href="{{ $.Scratch.Get "series_link" }}">{{ index .Params.series 0 }}</a>
-            </div>
-            <div class="excerpt">
-                <p>This was part {{ $.Scratch.Get "cur_page_num" }} in the {{ index .Params.series 0 }} series.</p>
-            </div>
+        <div class="title">
+            <a href="{{ $scratch.Get "series_link" }}">{{ index .Params.series 0 }}</a>
+        </div>
+        <div class="excerpt">
+            <p>This was part {{ $scratch.Get "cur_page_num" }} of {{ index .Params.series 0 }}.</p>
+            <p>Be sure to subscribe to the <a href="/feed.xml"><i class="fa fa-rss"></i> RSS feed</a> to hear about future parts in this series.</p>
+        </div>
+        {{ if or ($scratch.Get "next_link") ($scratch.Get "prev_link") }}
             <hr />
             <div class="previous previous-next">
-                {{ if $.Scratch.Get "prev_link" }}
+                {{ if $scratch.Get "prev_link" }}
                 <p>
-                    <a href="{{ $.Scratch.Get "prev_link" }}">{{ $.Scratch.Get "prev_title" }}</a>
-                    <p class="date">Part {{ sub ($.Scratch.Get "cur_page_num") 1 }}</p>
+                    <a href="{{ $scratch.Get "prev_link" }}">{{ $scratch.Get "prev_title" }}</a>
+                    <p class="date">Part {{ sub ($scratch.Get "cur_page_num") 1 }}</p>
                 </p>
                 {{end}}
             </div>
             <div class="next previous-next">
-                {{ if $.Scratch.Get "next_link" }}
+                {{ if $scratch.Get "next_link" }}
                 <p>
-                    <a href="{{ $.Scratch.Get "next_link" }}">{{ $.Scratch.Get "next_title" }}</a>
-                    <p class="date">Part {{ add ($.Scratch.Get "cur_page_num") 1 }}</p>
+                    <a href="{{ $scratch.Get "next_link" }}">{{ $scratch.Get "next_title" }}</a>
+                    <p class="date">Part {{ add ($scratch.Get "cur_page_num") 1 }}</p>
                 </p>
                 {{end}}
             </div>
