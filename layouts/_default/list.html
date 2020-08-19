@@ -14,7 +14,17 @@
                     {{ range $year.Pages }}
                     {{ if eq .Type "posts"}}
                     <li>
+                        {{ if isset .Params "canonical" }}
+                        <a href="{{ .Params.canonical }}" target="_blank" rel="noopener noreferrer">
+                            {{ .Title }}
+                            <i class="fas fa-external-link-alt" style="font-size: 0.5em;" title="Canonical version"></i>
+                        </a>
+                        <a href="{{ .Permalink }}">
+                            <i class="fas fa-archive" style="font-size: 0.5em;" title="Archived version"></i>
+                        </a>
+                        {{ else }}
                         <a href="{{ .Permalink }}">{{ .Title }}</a>
+                        {{ end }}
                         <small class="hidden-xs">{{ .Date.Format "January 2"}}</small>
                     </li>
                     {{ end }}
