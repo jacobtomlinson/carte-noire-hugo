@@ -1,41 +1,21 @@
-{{ define "main" }}
+<DOCTYPE html>
+    <html>
 <div class="container-fluid index error">
     <div class="row">
 
         <div class="col-md-12 content-panel articles">
-        <h1 class="header author-header">404</h1>
+        <font size="7">404</font>
 
         <div class="error-text">
-            Sorry but this page doesn't seem to exist.
+           <font size="4"> OOPS !!! This page is not available.</font>
         </div>
+            <br>
 
         <div class="error-text">
-            <a href="{{ .Site.BaseURL }}/">Home</a> |
-            <a href="{{ .Site.BaseURL }}/posts/">All Posts</a> |
-            <a href="{{ .Site.BaseURL }}/search/">Search</a>
-        </div>
-
-        {{ partial "social_links.html" . }}
-
-        </div>
-
-    </div>
-
-    <div class="content-panel related">
-
-        {{ range first 1 (where site.RegularPages "Type" "eq" "posts") }}
-        <div class="related-header">
-            <a href="{{ .Permalink }}">Suggested Article</a>
-        </div>
-        <div class="title">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            <a href="{{ .Site.BaseURL }}/">Home</a> <href><href><href>
         </div>
         <div class="excerpt">
-            {{ .Summary | truncate 300 }}
             <a href="{{ .Permalink }}">Continue Reading</a>
-        </div>
-        {{ end }}
-    </div>
-
+        
 </div>
-{{ end }}
+</html>
